@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _vitesse = 10f;
+    private Animator _anim;
     void Start()
     {
         
@@ -22,5 +23,14 @@ public class Player : MonoBehaviour
         Vector3 direction = new Vector3(posX, posY, 0);
 
         transform.Translate(direction * Time.deltaTime * _vitesse);
+
+        if (posX > 0f)
+        {
+            _anim.SetBool("Forward", true);
+        }
+        else 
+        {
+            //_anim.SetBool("Forward", false);
+        }
     }
 }

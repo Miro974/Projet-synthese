@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     private Animator _anim;
     void Start()
     {
-        
     }
 
     void Update()
@@ -24,13 +23,13 @@ public class Player : MonoBehaviour
 
         transform.Translate(direction * Time.deltaTime * _vitesse);
 
-        if (posX > 0f)
+        if (posX > transform.position.x)
         {
             _anim.SetBool("Forward", true);
         }
         else 
         {
-            //_anim.SetBool("Forward", false);
+            _anim.SetBool("Forward", false);
         }
     }
 }

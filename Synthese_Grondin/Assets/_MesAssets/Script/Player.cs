@@ -1,51 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _vitesse = 10f;
-
-    private Vector3 playerPosDepart;
-    private Vector3 mousePos;
-    public bool turned = false;
-
-
-
+    [SerializeField] private float speed = 10f;
     void Start()
     {
-        playerPosDepart = new Vector3 (-7.2f, -3.52f, 0f);
-        transform.position = playerPosDepart;
+        transform.position = new Vector3(0f, -4f, 0f);
     }
     void Update()
     {
-        MouvementJoueur();
-        RotationObjet();
+        Move();
     }
 
-    private void RotationObjet()
+    private void Move()
     {
-        mousePos = Input.mousePosition;
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        if (mousePos.x < 1)
-        {
-            Debug.Log("in IF");
-            transform.rotation = Quaternion.Euler(new Vector3(0f, -190f, 0f));
-            turned = true;
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-            turned = false;
-        }
+        Vector3 direction = new Vector3(horizontalInput, verticalInput, 0f);
+        transform.Translate(direction * Time.deltaTime * speed);
     }
 
-    private void MouvementJoueur()
-    {
-        float posX = Input.GetAxis("Horizontal");
-        float posY = Input.GetAxis("Vertical");
-        Vector3 direction = new Vector3(posX, posY, 0);
-
-        transform.Translate(direction * Time.deltaTime * _vitesse);
-    }
 }

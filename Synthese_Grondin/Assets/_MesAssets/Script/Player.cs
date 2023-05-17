@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletForce = 20f;
     [SerializeField] private float speed = 10f;
+    [SerializeField] private float fireRate = 0.5f;
+    private float canFire = -1.0f;
     
 
     void Start()
@@ -33,8 +35,9 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
-        { 
+        if (Input.GetMouseButton(0) && Time.time > canFire)
+        {
+            canFire = Time.time + fireRate;
             GameObject bullet = Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(bulletTransform.up * bulletForce, ForceMode2D.Impulse);

@@ -10,12 +10,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float bulletForce = 20f;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float fireRate = 0.5f;
+    [SerializeField] private int playerLife = 3;
     private float canFire = -1.0f;
+    private SpawnManager spawnManager;
     
 
     void Start()
     {
         transform.position = new Vector3(0f, -4f, 0f);
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
     }
     void Update()
     {
@@ -43,6 +46,16 @@ public class Player : MonoBehaviour
             rb.AddForce(bulletTransform.up * bulletForce, ForceMode2D.Impulse);
         }
         
+    }
+
+    public void Damage()
+    {
+        playerLife--;
+        if (playerLife < 1)
+        {
+            spawnManager.OnPlayerDeath();
+            Destroy(this.gameObject);
+        }
     }
 
 

@@ -50,7 +50,6 @@ public class EnemyShip : MonoBehaviour
 
     private void Shoot()
     {
-        
         if (Time.time > canFire)
         {
             fireRate = 3.5f;
@@ -59,7 +58,6 @@ public class EnemyShip : MonoBehaviour
             Rigidbody2D rb = enemyBullet.GetComponent<Rigidbody2D>();
             rb.AddForce(firingPoint.up * bulletForce, ForceMode2D.Impulse);
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)

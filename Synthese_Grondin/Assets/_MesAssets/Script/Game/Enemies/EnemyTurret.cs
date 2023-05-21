@@ -1,37 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyTurret : MonoBehaviour
 {
+    [SerializeField] private float rotateSpeed = 0.5f;
     [SerializeField] private int enemyLife = 1;
-    [SerializeField] private GameObject bulletPrefab = default;
-    [SerializeField] private Transform firingPoint = default;
-    [SerializeField] private float bulletForce = 10f;
 
-    private float fireRate;
-    private float canFire;
+    //private SpawnManager spawnManager;
+    private Player _player;
 
     void Start()
     {
-        
+       //spawnManager = FindObjectOfType<SpawnManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Shoot();
+        transform.Rotate(0f, 0f, rotateSpeed);
+        _player = FindObjectOfType<Player>();
     }
 
-    private void Shoot()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (Time.time > canFire)
+        if (other.tag == "Player")
         {
-            fireRate = 3.5f;
-            canFire = Time.time + fireRate;
-            GameObject enemyBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
-            Rigidbody2D rb = enemyBullet.GetComponent<Rigidbody2D>();
-            rb.AddForce(firingPoint.up * bulletForce, ForceMode2D.Impulse);
+            _player = other.transform.GetComponent<Player>();
+            _player.Damage();
+            Destroy(gameObject, 0f);
+        }
+        else if (other.tag == "Bullet")
+        {
+            Destroy(other.gameObject);
+            enemyLife--;
+            if (enemyLife < 1)
+            {
+                Destroy(gameObject, 0f);
+                //spawnManager.turretHere = false;
+            }
+
         }
     }
 }

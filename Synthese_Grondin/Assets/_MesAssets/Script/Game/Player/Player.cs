@@ -11,8 +11,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float bulletForce = 20f;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private int playerLife = 3;
     [SerializeField] GameObject enemyBullet = default;
+
+    [SerializeField] private int maxHealth = 20;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private HealthBar healthBar;
+
     private float canFire = -1.0f;
     private SpawnManager spawnManager;
     
@@ -21,12 +25,17 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0f, -4f, 0f);
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
     void Update()
     {
         Move();
         Shoot();
+        healthBar.GetHealth(currentHealth);
 
+        Debug.Log(healthBar.GetHealth(currentHealth));
     }
 
     private void Move()
@@ -75,8 +84,8 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        playerLife--;
-        if (playerLife < 1)
+        currentHealth--;
+        if (currentHealth < 1)
         {
             spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);

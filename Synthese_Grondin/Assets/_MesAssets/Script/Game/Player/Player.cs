@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
@@ -14,8 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject enemyBullet = default;
 
     [SerializeField] private int maxHealth = 20;
-    [SerializeField] private int currentHealth;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private int currentHealth = 20;
+
+    [SerializeField] private Health healthBar;
 
     private float canFire = -1.0f;
     private SpawnManager spawnManager;
@@ -28,14 +30,14 @@ public class Player : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currentHealth);
     }
     void Update()
     {
         Move();
         Shoot();
-        healthBar.GetHealth(currentHealth);
 
-        Debug.Log(healthBar.GetHealth(currentHealth));
+        healthBar.SetHealth(currentHealth); 
     }
 
     private void Move()

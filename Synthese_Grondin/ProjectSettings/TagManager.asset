@@ -9,6 +9,7 @@ TagManager:
   - SpawnManager
   - EnemyBullet
   - TurretCanon
+  - HealthBar
   layers:
   - Default
   - TransparentFX

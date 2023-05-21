@@ -154,7 +154,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   maxHealth: 20
   currentHealth: 0
-  healthBar: {fileID: 2114346264436048402, guid: 2c732d1c41b893f4bbf713d369a068c1, type: 3}
+  healthBar: {fileID: 8786145727521013395, guid: 2c732d1c41b893f4bbf713d369a068c1, type: 3}
 --- !u!50 &7564006076371556897
 Rigidbody2D:
   serializedVersion: 4

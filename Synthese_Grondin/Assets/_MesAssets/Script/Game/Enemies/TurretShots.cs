@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TurretShots : MonoBehaviour
 {
-    [SerializeField] private int enemyLife = 1;
     [SerializeField] private GameObject bulletPrefab = default;
     [SerializeField] private Transform firingPoint = default;
     [SerializeField] private float bulletForce = 10f;

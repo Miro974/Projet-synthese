@@ -152,6 +152,7 @@ MonoBehaviour:
   speed: 8
   fireRate: 0.5
   playerLife: 3
+  enemyBullet: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
 --- !u!50 &7564006076371556897
 Rigidbody2D:
   serializedVersion: 4

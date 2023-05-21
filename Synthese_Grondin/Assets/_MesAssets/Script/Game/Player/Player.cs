@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private int playerLife = 3;
+    [SerializeField] GameObject enemyBullet = default;
     private float canFire = -1.0f;
     private SpawnManager spawnManager;
     
@@ -34,6 +36,29 @@ public class Player : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0f);
         transform.Translate(direction * Time.deltaTime * speed);
+
+        CheckPosJoueur();
+    }
+
+    private void CheckPosJoueur()
+    {
+        if (transform.position.x <= -35f)
+        {
+            transform.position = new Vector3(32f, transform.position.y, 0f);
+        }
+        else if (transform.position.x >= 35f)
+        {
+            transform.position = new Vector3(-32f, transform.position.y, 0f);
+        }
+
+        if (transform.position.y <= -20f)
+        {
+            transform.position = new Vector3(transform.position.x, 20f, 0f);
+        }
+        else if (transform.position.y >= 20f)
+        {
+            transform.position = new Vector3(transform.position.x, -20f, 0f);
+        }
     }
 
     private void Shoot()
@@ -55,6 +80,16 @@ public class Player : MonoBehaviour
         {
             spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "EnemyBullet")
+        {
+            enemyBullet = other.transform.GetComponent<GameObject>();
+            Damage();
+            Destroy(other.gameObject, 0f);
         }
     }
 

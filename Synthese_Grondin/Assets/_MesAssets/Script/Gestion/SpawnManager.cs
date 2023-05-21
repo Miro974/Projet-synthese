@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab = default;
+    [SerializeField] private GameObject enemyShipPrefab = default;
     [SerializeField] private GameObject enemyContainer = default;
     private bool stopSpawning = false;
 
@@ -25,9 +25,9 @@ public class SpawnManager : MonoBehaviour
         while (!stopSpawning)
         {
             Vector3 posToSpawn = new Vector3(Random.Range(10f, -24f), Random.Range(16.5f, -18f), 0f);
-            GameObject newEnemy = Instantiate(enemyPrefab, posToSpawn, Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemyShipPrefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = enemyContainer.transform;
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(2.0f);
         }
     }
 

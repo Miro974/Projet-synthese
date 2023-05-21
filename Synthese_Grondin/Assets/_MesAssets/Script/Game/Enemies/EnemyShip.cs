@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyShip : MonoBehaviour
 {
     [SerializeField] private float speed = 4.0f;
     [SerializeField] private Transform target = default;
     [SerializeField] private float distanceBetween;
+    [SerializeField] private int enemyLife = 2;
+    [SerializeField] private GameObject bulletPrefab = default;
+    [SerializeField] private Transform firingPoint = default;
+    [SerializeField] private float bulletForce = 10f;
+
+    private float fireRate;
+    private float canFire;
     private float distance;
     private Player _player;
 
@@ -14,6 +21,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        canFire = Random.Range(0.5f,1f);
     }
 
     // Update is called once per frame
@@ -21,6 +30,7 @@ public class Enemy : MonoBehaviour
     {
         _player = FindObjectOfType<Player>();
         MoveEnemy();
+        Shoot();
     }
 
     private void MoveEnemy()
@@ -29,13 +39,27 @@ public class Enemy : MonoBehaviour
         distance = Vector3.Distance(transform.position, target.transform.position);
         Vector3 direction = target.transform.position - transform.position;
         direction.Normalize();
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
 
         if (distance < distanceBetween)
         {
-            transform.position = Vector3.MoveTowards(this.transform.position, target.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
+    }
+
+    private void Shoot()
+    {
+        
+        if (Time.time > canFire)
+        {
+            fireRate = 3.5f;
+            canFire = Time.time + fireRate;
+            GameObject enemyBullet = Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
+            Rigidbody2D rb = enemyBullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(firingPoint.up * bulletForce, ForceMode2D.Impulse);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -49,7 +73,12 @@ public class Enemy : MonoBehaviour
         else if(other.tag == "Bullet")
         {
             Destroy(other.gameObject);
-            Destroy(this.gameObject, 0f);
+            enemyLife--;
+            if (enemyLife < 1)
+            {
+                Destroy(this.gameObject, 0f);
+            }
+            
         }
     }
 }

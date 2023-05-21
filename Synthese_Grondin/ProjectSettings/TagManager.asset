@@ -7,6 +7,8 @@ TagManager:
   - EnemyShip
   - Bullet
   - SpawnManager
+  - EnemyBullet
+  - TurretCanon
   layers:
   - Default
   - TransparentFX

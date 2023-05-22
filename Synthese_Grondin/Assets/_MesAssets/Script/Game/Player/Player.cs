@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.SceneManagement;
+
 
 public class Player : MonoBehaviour
 {
@@ -14,8 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] GameObject enemyBullet = default;
 
-    [SerializeField] private int maxHealth = 20;
-    [SerializeField] private int currentHealth = 20;
+    [SerializeField] private int maxHealth = 40;
+    [SerializeField] public int currentHealth = 40;
 
     [SerializeField] private Health healthBar;
 
@@ -28,7 +30,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0f, -4f, 0f);
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
 
-        currentHealth = maxHealth;
+        currentHealth = 40;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
     }
@@ -103,6 +105,4 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject, 0f);
         }
     }
-
-
 }

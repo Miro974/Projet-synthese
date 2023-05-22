@@ -8,12 +8,17 @@ public class EnemyTurret : MonoBehaviour
     [SerializeField] private float rotateSpeed = 0.5f;
     [SerializeField] private int enemyLife = 1;
 
+    [SerializeField] private int points = 200;
+
+    private GestionUI gestionUI;
+
     //private SpawnManager spawnManager;
     private Player _player;
 
     void Start()
     {
-       //spawnManager = FindObjectOfType<SpawnManager>();
+        gestionUI = FindObjectOfType<GestionUI>().GetComponent<GestionUI>();
+        //spawnManager = FindObjectOfType<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -38,6 +43,7 @@ public class EnemyTurret : MonoBehaviour
             if (enemyLife < 1)
             {
                 Destroy(gameObject, 0f);
+                gestionUI.AjouterScore(points);
                 //spawnManager.turretHere = false;
             }
 

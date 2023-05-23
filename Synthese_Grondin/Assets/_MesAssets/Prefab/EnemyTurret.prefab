@@ -130,7 +130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e2dfdf7e2dd343b2679d69d6d1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: 1
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 7776560505851604957}
   bulletForce: 10
@@ -273,6 +272,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 0.5
   enemyLife: 1
+  explosionPrefab: {fileID: 702609396695731482, guid: 8538ab41fe2f2304090d87d2a196dcba, type: 3}
+  points: 200
 --- !u!61 &1525809302
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -450,7 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e2dfdf7e2dd343b2679d69d6d1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: 1
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 7776560505817342762}
   bulletForce: 10
@@ -584,7 +584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e2dfdf7e2dd343b2679d69d6d1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: 1
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 7776560503786958849}
   bulletForce: 10
@@ -686,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e2dfdf7e2dd343b2679d69d6d1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: 1
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 7776560505099718005}
   bulletForce: 10
@@ -788,7 +786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e2dfdf7e2dd343b2679d69d6d1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: 1
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 7776560504108787038}
   bulletForce: 10
@@ -890,7 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8e2dfdf7e2dd343b2679d69d6d1ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyLife: 1
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 7776560505246997319}
   bulletForce: 10

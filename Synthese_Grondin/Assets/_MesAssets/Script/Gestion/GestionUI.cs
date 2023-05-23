@@ -13,9 +13,6 @@ public class GestionUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI txtTemps = default;
     [SerializeField] private TextMeshProUGUI txtAmmo = default;
 
-    [SerializeField] private float fireRateEnemy = 4f;
-    [SerializeField] private float augFireRateEnemy = 4f;
-
     private bool _enPause = false;
     private int score = 0;
     private float tpsDepart = 0;

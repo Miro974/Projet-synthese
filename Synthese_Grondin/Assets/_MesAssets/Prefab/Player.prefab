@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305924605615440301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.228, y: 0.167, z: 0}
-  m_LocalScale: {x: 0.6961, y: 0.7005, z: 1}
+  m_LocalPosition: {x: 0.196, y: 0.054, z: 0}
+  m_LocalScale: {x: 0.44285882, y: 0.37273607, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7564006076371556900}
@@ -131,8 +131,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5504431254140573712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.254, y: -0.319, z: 0}
-  m_LocalScale: {x: 0.6961, y: 0.7005, z: 1}
+  m_LocalPosition: {x: -0.298, y: -0.2, z: 0}
+  m_LocalScale: {x: 0.49346527, y: 0.3840141, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7564006076371556900}
@@ -370,8 +370,9 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 0
   healthBar: {fileID: 8786145727521013395, guid: 2c732d1c41b893f4bbf713d369a068c1, type: 3}
-  _playerHurt1: {fileID: 0}
-  _playerHurt2: {fileID: 0}
+  _playerHurt1: {fileID: 5504431254140573712}
+  _playerHurt2: {fileID: 305924605615440301}
+  _bigExplosionPrefab: {fileID: 579715668841496670, guid: 3b6d44ed3aeeed54caa79b325790d870, type: 3}
 --- !u!50 &7564006076371556897
 Rigidbody2D:
   serializedVersion: 4

@@ -186,6 +186,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   firingPoint: {fileID: 2070285522}
   bulletForce: 10
+  explosionPrefab: {fileID: 702609396695731482, guid: 8538ab41fe2f2304090d87d2a196dcba, type: 3}
+  points: 100
 --- !u!1001 &8589275253103067056
 PrefabInstance:
   m_ObjectHideFlags: 0

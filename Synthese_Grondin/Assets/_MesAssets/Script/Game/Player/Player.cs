@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Health healthBar;
     [SerializeField] private GameObject _playerHurt1 = default;
     [SerializeField] private GameObject _playerHurt2 = default;
+    [SerializeField] private GameObject _bigExplosionPrefab = default;
 
     private float canFire = -1.0f;
     private SpawnManager spawnManager;
@@ -127,18 +128,18 @@ public class Player : MonoBehaviour
     {
         currentHealth--;
 
-        if (currentHealth >= 20)
+        if (currentHealth <= 20)
         {
             _playerHurt1.SetActive(true);
         }
-        else if (currentHealth < 20)
+        if (currentHealth <= 10)
         {
-            _playerHurt1.SetActive(true);
             _playerHurt2.SetActive(true);
         }
         if (currentHealth < 1)
         {
             spawnManager.OnPlayerDeath();
+            Instantiate(_bigExplosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

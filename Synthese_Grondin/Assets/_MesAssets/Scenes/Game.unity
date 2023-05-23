@@ -1283,8 +1283,6 @@ MonoBehaviour:
   txtScore: {fileID: 1977545596}
   txtTemps: {fileID: 1448543823}
   txtAmmo: {fileID: 2075430745}
-  fireRateEnemy: 4
-  augFireRateEnemy: 4
 --- !u!1 &794934677
 GameObject:
   m_ObjectHideFlags: 0

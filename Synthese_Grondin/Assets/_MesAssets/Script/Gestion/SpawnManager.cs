@@ -32,7 +32,7 @@ public class SpawnManager : MonoBehaviour
             Vector3 posToSpawn = new Vector3(Random.Range(10f, -24f), Random.Range(16.5f, -18f), 0f);
             GameObject newEnemy = Instantiate(enemyShipPrefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = enemyContainer.transform;
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 
@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
             Vector3 posToSpawn = new Vector3(Random.Range(10f, -24f), Random.Range(16.5f, -18f), 0f);
             GameObject newEnemy = Instantiate(enemyTurretPrefab, posToSpawn, Quaternion.identity);
             newEnemy.transform.parent = enemyContainer.transform;
-            yield return new WaitForSeconds(8.0f);
+            yield return new WaitForSeconds(5.0f);
         }
     }
 

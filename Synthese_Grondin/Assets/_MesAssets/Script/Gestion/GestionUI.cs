@@ -80,7 +80,7 @@ public class GestionUI : MonoBehaviour
         score += points;
         UpdateScore();
 
-        if ((score % 1000 == 0) && player.numMissile < 10)
+        if ((score % 1000 == 0) && player.numMissile < 5)
         { 
             player.numMissile++;
         }

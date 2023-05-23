@@ -366,7 +366,7 @@ MonoBehaviour:
   enemyBullet: {fileID: 3671861655879512716, guid: 43c6045214866484aa2103530cdcdb51, type: 3}
   missilePrefab: {fileID: 0}
   missileForce: 40
-  numMissile: 10
+  numMissile: 5
   maxHealth: 20
   currentHealth: 0
   healthBar: {fileID: 8786145727521013395, guid: 2c732d1c41b893f4bbf713d369a068c1, type: 3}

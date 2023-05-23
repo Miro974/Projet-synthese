@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(currentHealth);
 
-        numMissile = 10;
+        numMissile = 5;
     }
     void Update()
     {

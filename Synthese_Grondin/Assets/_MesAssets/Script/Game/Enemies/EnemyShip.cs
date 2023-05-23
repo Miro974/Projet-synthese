@@ -78,6 +78,7 @@ public class EnemyShip : MonoBehaviour
         {
             _player = other.transform.GetComponent<Player>();
             _player.Damage();
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject, 0f);
         }
         else if (other.tag == "Bullet")

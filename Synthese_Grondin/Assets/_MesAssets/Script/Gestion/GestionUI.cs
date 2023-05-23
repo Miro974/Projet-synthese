@@ -11,6 +11,10 @@ public class GestionUI : MonoBehaviour
     [SerializeField] private GameObject _menuPause = default;
     [SerializeField] private TextMeshProUGUI txtScore = default;
     [SerializeField] private TextMeshProUGUI txtTemps = default;
+    [SerializeField] private TextMeshProUGUI txtAmmo = default;
+
+    [SerializeField] private float fireRateEnemy = 4f;
+    [SerializeField] private float augFireRateEnemy = 4f;
 
     private bool _enPause = false;
     private int score = 0;
@@ -33,6 +37,7 @@ public class GestionUI : MonoBehaviour
         UpdateScore();
         ChargerSceneFin();
         Timer();
+        UpdateAmmo();
     }
 
     private void GestionPause()
@@ -68,10 +73,20 @@ public class GestionUI : MonoBehaviour
         return score;
     }
 
+    private void UpdateAmmo()
+    {
+        txtAmmo.text = "" + player.numMissile;
+    }
+
     public void AjouterScore(int points)
     {
         score += points;
         UpdateScore();
+
+        if ((score % 1000 == 0) && player.numMissile < 10)
+        { 
+            player.numMissile++;
+        }
     }
 
     public void Timer()

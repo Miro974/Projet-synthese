@@ -9,10 +9,13 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject enemyContainer = default;
     private bool stopSpawning = false;
 
+    private GestionUI gestionUI;
+
     // Start is called before the first frame update
     void Start()
     {
         StartSpawning();
+        gestionUI = FindObjectOfType<GestionUI>().GetComponent<GestionUI>();
     }
 
     public void StartSpawning()

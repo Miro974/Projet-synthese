@@ -58,7 +58,7 @@ public class EnemyShip : MonoBehaviour
 
     private void Shoot()
     {
-        if (gestionUI.getScore() > 800)
+        if (gestionUI.getScore() > 500)
         { 
             if (Time.time > canFire)
             {
@@ -73,13 +73,13 @@ public class EnemyShip : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             _player = other.transform.GetComponent<Player>();
             _player.Damage();
             Destroy(this.gameObject, 0f);
         }
-        else if(other.tag == "Bullet")
+        else if (other.tag == "Bullet")
         {
             Destroy(other.gameObject);
             enemyLife--;
@@ -88,7 +88,16 @@ public class EnemyShip : MonoBehaviour
                 Destroy(this.gameObject, 0f);
                 gestionUI.AjouterScore(points);
             }
-            
+
+        }
+        else if (other.tag == "Missile")
+        {
+            enemyLife = 0;
+            if (enemyLife < 1)
+            {
+                Destroy(this.gameObject, 0f);
+                gestionUI.AjouterScore(points);
+            }
         }
     }
 }

@@ -46,7 +46,15 @@ public class EnemyTurret : MonoBehaviour
                 gestionUI.AjouterScore(points);
                 //spawnManager.turretHere = false;
             }
-
+        }
+        else if (other.tag == "Missile")
+        {
+            enemyLife = 0;
+            if (enemyLife < 1)
+            {
+                Destroy(this.gameObject, 0f);
+                gestionUI.AjouterScore(points);
+            }
         }
     }
 }
